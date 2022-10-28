@@ -32,7 +32,7 @@ contract MockStaking is IDelegateClaim, Ownable {
     }
 
     function claim(address _userAddress, address _tokenAddress) external returns(uint256) {
-        require(userToApprover[_userAddress] == msg.sender || msg.sender == _userAddress);
+        require(userToApprover[_userAddress] == msg.sender || msg.sender == _userAddress, "Operation not allowed");
         uint256 tokenBalance = userToTokenToBalance[msg.sender][_tokenAddress];
         userToTokenToBalance[msg.sender][_tokenAddress] = 0;
 
@@ -67,7 +67,7 @@ contract MockStaking is IDelegateClaim, Ownable {
 
     }
 
-    function allowClaim(address userAddress, address allowedAddress) override external {
+    function allowClaim(address userAddress, address allowedAddress) external {
         require(userAddress == msg.sender, "You can't perform this action");
         userToApprover[msg.sender] = allowedAddress;
     }
