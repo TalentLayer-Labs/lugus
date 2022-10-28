@@ -4,7 +4,7 @@ import {IDelegateClaim} from "./interfaces/IDelegateClaim.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MockStacking is IDelegateClaim, Ownable {
+contract MockStaking is IDelegateClaim, Ownable {
     address[] public tokens;
     address public swapperAddress;
     uint private counter;
