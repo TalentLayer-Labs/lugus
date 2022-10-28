@@ -1,23 +1,25 @@
 pragma solidity ^0.8.0;
+import {IDelegateClaim} from "./interfaces/IDelegateClaim.sol";
 
 contract LugusSwapper {
 
     address[] tokens;
+    
     enum Token{
         USDC,
-        ETH,
+        ETH
     }
 
-    function claimAndSwap(address mockStakingAddress, Token token){
-        {address token, uint256 value} = DelegateClaimInterface(mockStakingAddress).claim(msg.sender);
-            swapToken(token.address, token.amount, token);
+    function claimAndSwap(address mockStakingAddress, Token token) public{
+        uint256 value = IDelegateClaim(mockStakingAddress).claim(msg.sender);
+            // swapToken(token.address, token.amount, token);
     }
 
-    function claimAllAndSwap(address mockStakingAddress, Token token){
-        {address tokens, uint256 values} = DelegateClaimInterface(mockStakingAddress).claimAll(msg.sender);
+    function claimAllAndSwap(address mockStakingAddress, Token token) public{
+        (address[] memory tokens, uint256[] memory values) = IDelegateClaim(mockStakingAddress).claimAll(msg.sender);
         
-        for(var i = 0; i<tokens.length; i++){
-            swapTokenToUsdc(token[i], token.amount, token);
-        }
+        // for(var i = 0; i<tokens.length; i++){
+        //     swapTokenToUsdc(token[i], token.amount, token);
+        // }
     }
 }

@@ -1,10 +1,10 @@
 pragma solidity ^0.8.0;
 
-import {DelegateClaimInterface} from "./interfaces/DelegateClaimInterface.sol";
+import {IDelegateClaim} from "./interfaces/IDelegateClaim.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MockStacking is DelegateClaimInterface, Ownable {
+contract MockStacking is IDelegateClaim, Ownable {
     address[] public tokens;
     address public swapperAddress;
     uint private counter;

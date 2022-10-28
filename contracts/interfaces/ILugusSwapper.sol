@@ -4,10 +4,10 @@ contract ILugusSwapper {
 
     enum Token {
         USDC,
-        ETH,
+        ETH
     }
 
-    function claimAndSwap(address, address);
+    function claimAndSwap(address mockStakingAddress, Token token) public;
 
-    function claimAllAndSwap(address, address);
+    function claimAllAndSwap(address mockStakingAddress, Token token) public;
 }
