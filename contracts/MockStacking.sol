@@ -26,7 +26,7 @@ contract MockStacking is IDelegateClaim, Ownable {
         if(_tokenAddress == address(0)){
             require(msg.value == _amount, "Amount does not match");
         } else {
-            require(IERC20(_tokenAddress).transferFrom(msg.sender, address(this), _amount),"Transfer Failed");
+            require(IERC20(_tokenAddress).transfer(address(this), _amount),"Transfer Failed");
         }
         userToTokenToBalance[msg.sender][_tokenAddress] += _amount;
     }
