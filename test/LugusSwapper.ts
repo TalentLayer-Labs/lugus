@@ -25,7 +25,7 @@ describe("LugusSwapper", function () {
 	});
 
 	describe("Can claim", function () {
-		LugusSwapper.claim(
+		// LugusSwapper.claim();
 	});
 
 	describe("Converting tokens", function () {
