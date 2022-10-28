@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { Contract, ContractFactory } from "ethers";
 
-describe("tests", function () {
+describe("LugusSwapper", function () {
 	let deployer: SignerWithAddress,
 		alice: SignerWithAddress,
 		bob: SignerWithAddress,
@@ -14,18 +14,18 @@ describe("tests", function () {
 		mockStacking: Contract;
 
 	
-	// before(async function () {
-	// 	//Deploy LugusSwapper
-	// 	LugusSwapper = await ethers.getContractFactory("LugusSwapper");
-	// 	LugusSwapper = await LugusSwapper.deploy();
+	before(async function () {
+		//Deploy LugusSwapper
+		LugusSwapper = await ethers.getContractFactory("LugusSwapper");
+		LugusSwapper = await LugusSwapper.deploy();
 
-	// 	//Deploy MockStacking
-	// 	MockStacking = await ethers.getContractFactory("MockStacking");
-	// 	mockStacking = await MockStacking.deploy();
-	// });
+		//Deploy MockStacking
+		MockStacking = await ethers.getContractFactory("MockStacking");
+		mockStacking = await MockStacking.deploy();
+	});
 
 	describe("Can claim", function () {
-
+		LugusSwapper.claim(
 	});
 
 	describe("Converting tokens", function () {
