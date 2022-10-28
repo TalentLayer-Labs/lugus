@@ -67,8 +67,7 @@ contract MockStaking is IDelegateClaim, Ownable {
 
     }
 
-    function allowClaim(address userAddress, address allowedAddress) external {
-        require(userAddress == msg.sender, "You can't perform this action");
+    function allowClaim(address allowedAddress) external {
         userToApprover[msg.sender] = allowedAddress;
     }
 }
