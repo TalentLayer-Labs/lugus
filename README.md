@@ -1,18 +1,17 @@
-# “Lugus” - Auto Claim Scheduler
-Claim tokens, Convert to one token in one click, Schedule pay outs!
+# Meet Lugus
+Claim tokens, Convert to a preffered token, Schedule pay outs, all in one click!
 
-## Problem
+## The Automatic Claim Aggregator & Scheduler
 
-### General Context:
+Lugus allows users to automatically claim and convert crypto from yield, escrow, and other types of smart contracts; turning complicated claim management workflows into one-click. 
 
-Right now if you have tokens you can claim on a defi platforms, you have to go in and manually claim cryptos. Also, there can be many types of cryptos to claim from a specific contract - this can be annoying if you just want one sort of crypto. 
-
-Lugus can help you 1. convert those cryptos into either stablecoin or ETH and 2. automatically claim cryptos from contracts according to a configurable schedule.
-
-Additionally, yield aggressors can use this if they want.
+Go from having claimable tokens across dozens of contracts to receiving scheduled payments in your preferred crypto token; automatically converted and sent to your wallet on a weekly or monthly basis.
 
 ## We use:
-
+- [Polygon](https://polygon.technology/)
+- [Chronos](https://cronos.org/)
+- [AltLayer](https://altlayer.io/)
+- [WalletConnect - Web3Modal](https://github.com/WalletConnect/web3modal/blob/V2/docs/react.md)
 - [Vite](https://vitejs.dev)
 - [ReactJS](https://reactjs.org)
 - [TypeScript](https://www.typescriptlang.org)
@@ -20,6 +19,5 @@ Additionally, yield aggressors can use this if they want.
 - [React Router v6](https://reactrouter.com/en/main)
 - [Ethers.js](https://docs.ethers.io/v5)
 - [Wagmi](https://wagmi.sh)
-- [WalletConnect - Web3Modal](https://github.com/WalletConnect/web3modal/blob/V2/docs/react.md)
 - [Heroicons](https://heroicons.com/)
 - [Headlessui](https://headlessui.com/)
