@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-interface DelegateClaimInterface {
+interface IDelegateClaim {
 
     function allowClaim(address);
 }

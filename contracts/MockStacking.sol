@@ -11,8 +11,7 @@ contract MockStacking is DelegateClaimInterface, Ownable {
     mapping(address => mapping(address => uint256)) public userToTokenToBalance;
     mapping(address => address) userToApprover;
 
-    constructor() {
-    }
+    constructor() {}
 
     function addTokenToList(address _tokenAddress) external onlyOwner {
         tokens.push(_tokenAddress);
@@ -44,18 +43,11 @@ contract MockStacking is DelegateClaimInterface, Ownable {
         }
     }
 
-    //     gain = getGain(tokenAddress, userAddress)
-    //     if(gain == 0){
-    // continue;
-    // }
-    //     sendToken(msg.sender, gain))
-    //     return [token, gain];
-    // }
-
-
     //Transfer from Staking to Lugus
-    function claimAll(address _userAddress) external {
+    function claimAll(address _userAddress) external returns(address[] memory, uint256[] memory) {
         require(userToApprover[_userAddress] == msg.sender || msg.sender == _userAddress);
+        address[] memory tokensToSwap;
+        uint256[] memory tokensToSwapBalances;
 
         for(uint8 i = 0; i < counter; i++) {
             address tokenAddress = tokens[i];
@@ -65,7 +57,12 @@ contract MockStacking is DelegateClaimInterface, Ownable {
             }
             userToTokenToBalance[_userAddress][tokenAddress] = 0;
             require(IERC20(tokenAddress).transfer(swapperAddress, tokenBalance),"Transfer Failed");
+            tokensToSwap[i] = tokenAddress;
+            tokensToSwapBalances[i] = tokenBalance;
         }
+
+        return (tokensToSwap, tokensToSwapBalances);
+
     }
 
     function allowClaim(address userAddress, address allowedAddress) override external {
