@@ -6,6 +6,7 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract MockStacking is DelegateClaimInterface, Ownable {
     address[] public tokens;
+    address public swapperAddress;
     uint private counter;
     mapping(address => mapping(address => uint256)) public userToTokenToBalance;
     mapping(address => address) userToApprover;
@@ -18,7 +19,16 @@ contract MockStacking is DelegateClaimInterface, Ownable {
         counter++;
     }
 
-    function stake(address _tokenAddress, uint256 _amount) public {
+    function setSwapperAddress(address _swapperAddress) external onlyOwner {
+        swapperAddress = _swapperAddress;
+    }
+
+    function stake(address _tokenAddress, uint256 _amount) public payable {
+        if(_tokenAddress == address(0)){
+            require(msg.value == _amount, "Amount does not match");
+        } else {
+            require(IERC20(_tokenAddress).transferFrom(msg.sender, address(this), _amount),"Transfer Failed");
+        }
         userToTokenToBalance[msg.sender][_tokenAddress] += _amount;
     }
 
@@ -43,9 +53,9 @@ contract MockStacking is DelegateClaimInterface, Ownable {
     // }
 
 
+    //Transfer from Staking to Lugus
     function claimAll(address _userAddress) external {
         require(userToApprover[_userAddress] == msg.sender || msg.sender == _userAddress);
-
 
         for(uint8 i = 0; i < counter; i++) {
             address tokenAddress = tokens[i];
@@ -54,7 +64,7 @@ contract MockStacking is DelegateClaimInterface, Ownable {
                 continue;
             }
             userToTokenToBalance[_userAddress][tokenAddress] = 0;
-            require(IERC20(tokenAddress).transfer(msg.sender, tokenBalance),"Transfer Failed");
+            require(IERC20(tokenAddress).transfer(swapperAddress, tokenBalance),"Transfer Failed");
         }
     }
 
