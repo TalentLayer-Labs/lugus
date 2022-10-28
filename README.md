@@ -1,5 +1,6 @@
 # Meet Lugus
-Claim tokens, Convert to a preffered token, Schedule pay outs, all in one click!
+Claim tokens. Convert to your preffered token. Schedule pay outs. 
+All in one click!
 
 ## The Automatic Claim Aggregator & Scheduler
 
