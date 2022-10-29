@@ -35,13 +35,13 @@ contract MockStaking is IDelegateClaim, Ownable {
 
     function claim(address _userAddress, address _tokenAddress) external returns(uint256) {
         require(userToApprover[_userAddress] == msg.sender || msg.sender == _userAddress, "Operation not allowed");
-        uint256 tokenBalance = userToTokenToBalance[msg.sender][_tokenAddress];
-        userToTokenToBalance[msg.sender][_tokenAddress] = 0;
+        uint256 tokenBalance = userToTokenToBalance[_userAddress][_tokenAddress];
+        userToTokenToBalance[_userAddress][_tokenAddress] = 0;
 
         if(_tokenAddress == address(0)){
-            payable(msg.sender).transfer(tokenBalance);
+            payable(_userAddress).transfer(tokenBalance);
         } else {
-            require(IERC20(_tokenAddress).transfer(msg.sender, tokenBalance),"Transfer Failed");
+            require(IERC20(_tokenAddress).transfer(_userAddress, tokenBalance),"Transfer Failed");
         }
 
         return (tokenBalance);
@@ -49,7 +49,7 @@ contract MockStaking is IDelegateClaim, Ownable {
 
     //Transfer from Staking to Lugus
     function claimAll(address _userAddress) external returns(address[50] memory, uint256[50] memory) {
-        require(userToApprover[_userAddress] == msg.sender || msg.sender == _userAddress);
+        require(userToApprover[_userAddress] == msg.sender || msg.sender == _userAddress, "Operation not allowed");
         // uint256 length = tokens.length;
 
         address[50] memory tokensToSwap;

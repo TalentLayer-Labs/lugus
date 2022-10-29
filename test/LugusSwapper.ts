@@ -12,11 +12,13 @@ describe("LugusSwapper", function () {
 		LugusSwapper: ContractFactory,
 		MockStaking: ContractFactory,
 		SimpleERC20: ContractFactory,
+		SushiSwapHelper: ContractFactory,
 		lugusSwapper: Contract,
 		mockStaking: Contract,
 		tokenA: Contract,
 		tokenB: Contract,
-		tokenC: Contract;
+		tokenC: Contract,
+		sushiSwapHelper: Contract;
 
 	const setupAmount = 1000,
 		stakeAmount = 100;
@@ -35,6 +37,10 @@ describe("LugusSwapper", function () {
 		tokenA = await SimpleERC20.deploy();
 		tokenB = await SimpleERC20.deploy();
 		tokenC = await SimpleERC20.deploy();
+
+		//Deploy SushiSwapHelper
+		SushiSwapHelper = await ethers.getContractFactory("SushiSwapHelper");
+		sushiSwapHelper = await SushiSwapHelper.deploy();
 
 		//Initiate signers
 		[deployer, alice] = await ethers.getSigners();
@@ -68,10 +74,23 @@ describe("LugusSwapper", function () {
 	});
 
 	describe("Claim tokens", function () {
-		it("Claim " + stakeAmount + " tokens", async function () {
+		it("Claim " + stakeAmount + " tokens from user", async function () {
+			// await mockStaking.connect(alice).allowClaim(deployer.address);
+			await expect(await mockStaking.connect(alice).claim(alice.address, tokenA.address), "Claim tokenA").to.changeTokenBalances(tokenA, [mockStaking, alice], [-stakeAmount, stakeAmount]);
+			await expect(await mockStaking.connect(alice).claimAll(alice.address), "Claim all tokens")
+				.to.changeTokenBalances(tokenA, [mockStaking, lugusSwapper], [0, 0])
+				.to.changeTokenBalances(tokenB, [mockStaking, lugusSwapper], [-stakeAmount, stakeAmount])
+				.to.changeTokenBalances(tokenC, [mockStaking, lugusSwapper], [-stakeAmount, stakeAmount]);
+		});
+
+		it("Claim " + stakeAmount + " tokens from approved address", async function () {
+			await stakeTokensUtils(stakeAmount);
 			await mockStaking.connect(alice).allowClaim(deployer.address);
-			// await expect(await mockStaking.connect(alice).claim(alice.address, tokenA.address), "Claim tokenA").to.changeTokenBalances(tokenA, [deployer, alice], [stakeAmount, -stakeAmount]);
-			await expect(await mockStaking.connect(alice).claimAll(alice.address), "Claim tokenA").to.changeTokenBalances(tokenA, [deployer, alice], [stakeAmount, -stakeAmount]);
+			await expect(await mockStaking.connect(deployer).claim(alice.address, tokenA.address), "Claim tokenA").to.changeTokenBalances(tokenA, [mockStaking, alice], [-stakeAmount, stakeAmount]);
+			await expect(await mockStaking.connect(deployer).claimAll(alice.address), "Claim all tokens")
+				.to.changeTokenBalances(tokenA, [mockStaking, lugusSwapper], [0, 0])
+				.to.changeTokenBalances(tokenB, [mockStaking, lugusSwapper], [-stakeAmount, stakeAmount])
+				.to.changeTokenBalances(tokenC, [mockStaking, lugusSwapper], [-stakeAmount, stakeAmount]);
 		});
 
 		// it("Claim and Swap singel token", async function () {
@@ -85,12 +104,19 @@ describe("LugusSwapper", function () {
 		// });
 	})
 
-	describe("Converting tokens", function () {
+
+	describe.only("Claim " + stakeAmount + " units from one token", function () {
 		it("To USDC", async function () {
 			// expect(1).to.be.equal(0);
 		});
 		it("To ETH", async function () {
-			// expect(1).to.be.equal(0);
+			await stakeTokenUtils(stakeAmount);
+
+			await sushiSwapHelper.connect(deployer).addLiquidity(tokenA.address, 100, 100);
+			await mockStaking.connect(alice).allowClaim(lugusSwapper.address);
+			await expect(await lugusSwapper.connect(alice).claimAndSwapForEth(mockStaking.address, tokenA.address), "Claim & swap token A for ETH")
+				.to.changeTokenBalances(tokenA, [lugusSwapper, alice], [0, 0]);
+
 		});
 	});
 
@@ -115,4 +141,19 @@ describe("LugusSwapper", function () {
 			// expect(1).to.be.equal(0);
 		});
 	});
+
+
+	const stakeTokensUtils = async (tokenAmount: number) => {
+		await tokenA.connect(alice).approve(mockStaking.address, tokenAmount);
+		await tokenB.connect(alice).approve(mockStaking.address, tokenAmount);
+		await tokenC.connect(alice).approve(mockStaking.address, tokenAmount);
+		await mockStaking.connect(alice).stake(tokenA.address, tokenAmount);
+		await mockStaking.connect(alice).stake(tokenB.address, tokenAmount);
+		await mockStaking.connect(alice).stake(tokenC.address, tokenAmount);
+	}
+
+	const stakeTokenUtils = async (tokenAmount: number) => {
+		await tokenA.connect(alice).approve(mockStaking.address, tokenAmount);
+		await mockStaking.connect(alice).stake(tokenA.address, tokenAmount);
+	}
 });
