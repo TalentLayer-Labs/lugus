@@ -14,14 +14,13 @@ export default function Content() {
               <div className='mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0'>
                 <div>
                   <div className='mt-6'>
-                  <h2 className='text-3xl font-bold tracking-tight text-gray-900'>
-                    Conjure Lugus: The Patron God of Trade
+                    <h2 className='text-3xl font-bold tracking-tight text-gray-900'>
+                      One-Click Claim Management
                     </h2>
                     <p className='mt-4 text-lg text-gray-500'>
-                    In Lusitanian mythology, Lugus is the patron god of trade. This three-faced god was worshiped by tribes living in modern-day Portugal and broader Iberia.
-                    </p>
-                    <p className='mt-4 text-lg text-gray-500'>
-                    Empowered by Lugus, you can wield godly power over your yield and escrow claims; scheduling pay-outs and converting to your favorite token at your desire. 
+                      Lugus allows users to automatically claim and convert crypto from yield,
+                      escrow, and other types of smart contracts; turning complicated claim
+                      management workflows into a single one-click step.
                     </p>
                     <div className='mt-6'>
                       <a
@@ -32,8 +31,7 @@ export default function Content() {
                     </div>
                   </div>
                 </div>
-                <div className='mt-8 border-t border-gray-200 pt-6'>
-                </div>
+                <div className='mt-8 border-t border-gray-200 pt-6'></div>
               </div>
               <div className='mt-12 sm:mt-16 lg:mt-0'>
                 <div className='-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
@@ -53,10 +51,12 @@ export default function Content() {
                 <div>
                   <div className='mt-6'>
                     <h2 className='text-3xl font-bold tracking-tight text-gray-900'>
-                    Schedule Claims. Convert Claimed Tokens to Your Favorite Crypto.
+                      Schedule Claims. Convert Claimed Tokens to Your Favorite Crypto.
                     </h2>
                     <p className='mt-4 text-lg text-gray-500'>
-Go from having claimable tokens across dozens of contracts to receiving scheduled payments in your preferred crypto token; automatically converted and sent to your wallet on a weekly or monthly basis.
+                      Go from having claimable tokens across dozens of contracts to receiving
+                      scheduled payments in your preferred crypto token; automatically converted and
+                      sent to your wallet on a weekly or monthly basis.
                     </p>
                     <div className='mt-6'>
                       <a
@@ -85,14 +85,17 @@ Go from having claimable tokens across dozens of contracts to receiving schedule
               <div className='mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0'>
                 <div>
                   <div className='mt-6'>
-                  <h2 className='text-3xl text-white font-bold tracking-tight text-gray-900'>
-                      Block block block block
+                    <h2 className='text-3xl text-white font-bold tracking-tight text-gray-900'>
+                      Ready to use Web3 boilerplate
                     </h2>
                     <h2 className='text-3xl font-bold tracking-tight text-gray-900'>
-                     One-Click Claim Management
+                      Conjure Lugus: The Patron God of Trade
                     </h2>
                     <p className='mt-4 text-lg text-gray-500'>
-                    Lugus allows users to automatically claim and convert crypto from yield, escrow, and other types of smart contracts; turning complicated claim management workflows into a single one-click step. 
+                      According to Lusitanian mythology, Lugus is the patron god of trade. This
+                      three-faced god was worshiped by Lusithians living in modern-day Porgugal and
+                      broader Iberia. Empowered by Lugus, you can wield godly power over your yield
+                      and escrow claims; trading to your favorite token at your desire.
                     </p>
                     <div className='mt-6'>
                       <a
@@ -103,8 +106,7 @@ Go from having claimable tokens across dozens of contracts to receiving schedule
                     </div>
                   </div>
                 </div>
-                <div className='mt-8 border-t border-gray-200 pt-6'>
-                </div>
+                <div className='mt-8 border-t border-gray-200 pt-6'></div>
               </div>
               <div className='mt-12 sm:mt-16 lg:mt-0'>
                 <div className='-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
@@ -117,7 +119,6 @@ Go from having claimable tokens across dozens of contracts to receiving schedule
               </div>
             </div>
           </div>
-
         </div>
       </main>
     </div>

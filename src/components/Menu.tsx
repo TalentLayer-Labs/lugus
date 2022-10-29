@@ -56,11 +56,7 @@ function Menu() {
             <div className='flex justify-start lg:w-0 lg:flex-1'>
               <a href='/'>
                 <span className='sr-only'>Your Company</span>
-                <img
-                  className='h-8 w-auto sm:h-10'
-                  src='public/lugus.png'
-                  alt=''
-                />
+                <img className='h-8 w-auto sm:h-10' src='public/lugus.png' alt='' />
               </a>
             </div>
             <div className='-my-2 -mr-2 md:hidden'>
@@ -89,7 +85,6 @@ function Menu() {
               <Popover className='relative'>
                 {({ open }) => (
                   <>
-
                     <Transition
                       as={Fragment}
                       enter='transition ease-out duration-200'
@@ -124,12 +119,6 @@ function Menu() {
               </Popover>
             </Popover.Group>
             <div className='hidden items-center justify-end md:flex md:flex-1 lg:w-0'>
-              {/* <a
-                href='#'
-                className='ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700'>
-                Connect your Wallet
-              </a> */}
-
               {account.isConnected === true ? (
                 <p>{truncateAddress(account.address)}</p>
               ) : (
