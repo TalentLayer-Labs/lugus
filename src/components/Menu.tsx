@@ -7,39 +7,33 @@ import {
   Bars3Icon,
   ChatBubbleBottomCenterTextIcon,
   ChatBubbleLeftRightIcon,
+  ClockIcon,
   InboxIcon,
   QuestionMarkCircleIcon,
+  ServerIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { ChevronDownIcon, CubeIcon } from '@heroicons/react/20/solid';
 
 const tools = [
   {
-    name: 'ReactJs',
-    description: 'Declarative. React makes it painless to create interactive UIs.',
-    href: 'https://reactjs.org',
-    icon: InboxIcon,
+    name: 'Home',
+    description: 'Home page.',
+    href: 'home',
+    icon: CubeIcon,
   },
   {
-    name: 'Web3modal',
-    description:
-      'Web3Modal is a versatile library that makes it super easy to connect users with your Dapp and start interacting with the blockchain.',
-    href: 'https://github.com/WalletConnect/web3modal/blob/V2/docs/react.md',
-    icon: ChatBubbleBottomCenterTextIcon,
+    name: 'Dashboard',
+    description: 'The Lugus Dashboard',
+    href: 'dashboard',
+    icon: ServerIcon,
   },
   {
-    name: 'Vite',
+    name: 'Schedule Claims',
     description:
-      ' Instant Server Start · Lightning Fast HMR · Rich Features · Optimized Build · Universal Plugins',
-    href: 'https://vitejs.dev',
-    icon: ChatBubbleLeftRightIcon,
-  },
-  {
-    name: 'Ethers',
-    description:
-      'The ethers.js library aims to be a complete and compact library for interacting with the Ethereum Blockchain and its ecosystem',
-    href: 'https://docs.ethers.io/v5',
-    icon: QuestionMarkCircleIcon,
+      'Schedule a claim for a new contract.',
+    href: 'services',
+    icon: ClockIcon,
   },
 ];
 
@@ -55,7 +49,7 @@ function Menu() {
           <div className='mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8'>
             <div className='flex justify-start lg:w-0 lg:flex-1'>
               <a href='/'>
-                <span className='sr-only'>Your Company</span>
+                <span className='sr-only'>TalentLayer</span>
                 <img className='h-8 w-auto sm:h-10' src='lugus.png' alt='' />
               </a>
             </div>
@@ -144,8 +138,8 @@ function Menu() {
                     <div>
                       <img
                         className='h-8 w-auto'
-                        src='https://tailwindui.com/img/logos/mark.svg?from-color=purple&from-shade=600&to-color=indigo&to-shade=600&toShade=600'
-                        alt='Your Company'
+                        src='lugus.png'
+                        alt='Lugus'
                       />
                     </div>
                     <div className='-mr-2'>
@@ -156,23 +150,6 @@ function Menu() {
                     </div>
                   </div>
                   <div className='py-6 px-5'>
-                    <div className='grid grid-cols-2 gap-4'>
-                      <a
-                        href='#'
-                        className='text-base font-medium text-gray-900 hover:text-gray-700'>
-                        Home
-                      </a>
-                      <a
-                        href='#'
-                        className='text-base font-medium text-gray-900 hover:text-gray-700'>
-                        About
-                      </a>
-                      <a
-                        href='#'
-                        className='text-base font-medium text-gray-900 hover:text-gray-700'>
-                        Dashboard
-                      </a>
-                    </div>
                     <div className='mt-6'>
                       <a
                         href='#'
