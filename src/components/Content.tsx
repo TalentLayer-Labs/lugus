@@ -86,10 +86,10 @@ Go from having claimable tokens across dozens of contracts to receiving schedule
                       Ready to use Web3 boilerplate
                     </h2>
                     <h2 className='text-3xl font-bold tracking-tight text-gray-900'>
-                      Lugus: The Patron God of Trade
+                     Conjure Lugus: The Patron God of Trade
                     </h2>
                     <p className='mt-4 text-lg text-gray-500'>
-                      Lugus is the 
+                     According to Lusitanian mythology, Lugus is the patron god of trade. This three-faced god was worshiped by Lusithians living in modern-day Porgugal and broader Iberia. Empowered by Lugus, you can wield godly power over your yield and escrow claims; trading to your favorite token at your desire.
                     </p>
                     <div className='mt-6'>
                       <a
