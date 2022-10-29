@@ -15,12 +15,13 @@ export default function Content() {
                 <div>
                   <div className='mt-6'>
                     <h2 className='text-3xl font-bold tracking-tight text-gray-900'>
-                      One-Click Claim Management
+                      Conjure Lugus: The Patron God of Trade
                     </h2>
                     <p className='mt-4 text-lg text-gray-500'>
-                      Lugus allows users to automatically claim and convert crypto from yield,
-                      escrow, and other types of smart contracts; turning complicated claim
-                      management workflows into a single one-click step.
+                      According to Lusitanian mythology, Lugus is the patron god of trade. This
+                      three-faced god was worshiped by Lusithians living in modern-day Porgugal and
+                      broader Iberia. Empowered by Lugus, you can wield godly power over your yield
+                      and escrow claims; trading to your favorite token at your desire.
                     </p>
                     <div className='mt-6'>
                       <a
@@ -60,7 +61,7 @@ export default function Content() {
                     </p>
                     <div className='mt-6'>
                       <a
-                        href='/dashboard'
+                        href='/services'
                         className='inline-flex rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700'>
                         Schedule a Claim
                       </a>
@@ -86,16 +87,15 @@ export default function Content() {
                 <div>
                   <div className='mt-6'>
                     <h2 className='text-3xl text-white font-bold tracking-tight text-gray-900'>
-                      Ready to use Web3 boilerplate
+                      Placeholder white space
                     </h2>
                     <h2 className='text-3xl font-bold tracking-tight text-gray-900'>
-                      Conjure Lugus: The Patron God of Trade
+                      One-Click Claim Management
                     </h2>
                     <p className='mt-4 text-lg text-gray-500'>
-                      According to Lusitanian mythology, Lugus is the patron god of trade. This
-                      three-faced god was worshiped by Lusithians living in modern-day Porgugal and
-                      broader Iberia. Empowered by Lugus, you can wield godly power over your yield
-                      and escrow claims; trading to your favorite token at your desire.
+                      Lugus allows users to automatically claim and convert crypto from yield,
+                      escrow, and other types of smart contracts; turning complicated claim
+                      management workflows into a single one-click step.
                     </p>
                     <div className='mt-6'>
                       <a
