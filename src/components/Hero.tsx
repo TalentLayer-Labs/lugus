@@ -19,10 +19,13 @@ export default function Hero() {
             <div className='relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8'>
               <h1 className='text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl'>
                 <span className='block text-white'>Meet Lugus</span>
-                <span className='block text-indigo-200'>the automatic claim aggregator & scheduler</span>
+                <span className='block text-indigo-200'>
+                  the automatic claim aggregator & scheduler
+                </span>
               </h1>
               <p className='mx-auto mt-6 max-w-lg text-center text-xl text-indigo-200 sm:max-w-3xl'>
-              Claim tokens from yield or escrow contracts. Convert baskets to your preferred token. Schedule payouts. All in one click!
+                Claim tokens from yield or escrow contracts. Convert baskets to your preferred
+                token. Schedule payouts. All in one click!
               </p>
               <div className='mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center'>
                 <div className='space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0'>
