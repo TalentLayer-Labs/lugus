@@ -1,6 +1,8 @@
-import { ethers } from "hardhat";
+import {task} from "hardhat/config";
 
-async function main() {
+//npx hardhat deploy --network localhost
+task("deploy", "Deploys contracts")
+  .setAction(async (taskArgs, {ethers, run}) => {
   // const [deployer] = await ethers.getSigners();
 
   // console.log("Deploying contracts with the account:", deployer.address);
@@ -16,15 +18,16 @@ async function main() {
   // await mockStaking.deployed();
   await lugusSwapper.deployed();
 
-  console.log(`MockStaking deployed to ${mockStaking.address}`);
+  // console.log(`MockStaking deployed to ${mockStaking.address}`);
   console.log(`LugusSwapper deployed to ${lugusSwapper.address}`);
-}
+});
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+
+// // We recommend this pattern to be able to use async/await everywhere
+// // and properly handle errors.
+// main()
+//   .then(() => process.exit(0))
+//   .catch((error) => {
+//     console.error(error);
+//     process.exit(1);
+//   });

@@ -1,4 +1,8 @@
+import {HardhatUserConfig} from "hardhat/config";
+import {NetworkUserConfig} from "hardhat/types";
 require("dotenv").config({ path: ".env"});
+import "./scripts/deploy";
+import "@nomicfoundation/hardhat-toolbox";
 
 const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
 
