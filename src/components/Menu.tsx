@@ -81,6 +81,11 @@ function Menu() {
                 className='text-base font-medium text-gray-500 hover:text-gray-900'>
                 Dashboard
               </Link>
+              <Link
+                to='/services'
+                className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                Schedule a Claim
+              </Link>
               <Popover className='relative'>
                 {({ open }) => (
                   <>
