@@ -19,7 +19,7 @@ export default function Content() {
                     </h2>
                     <p className='mt-4 text-lg text-gray-500'>
                       According to Lusitanian mythology, Lugus is the patron god of trade. This
-                      three-faced god was worshiped by Lusithians living in modern-day Porgugal and
+                      three-faced god was worshiped by Lusithians living in modern-day Portugal and
                       broader Iberia. Empowered by Lugus, you can wield godly power over your yield
                       and escrow claims; trading to your favorite token at your desire.
                     </p>
