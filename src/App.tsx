@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { chains, providers } from '@web3modal/ethereum';
 import { Route, Routes } from 'react-router-dom';
 import { useAccount, Web3Modal } from '@web3modal/react';
 import type { ConfigOptions } from '@web3modal/core';
@@ -9,6 +10,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Dashboard from './pages/Dashboard';
 import NotLog from './pages/NotLog';
+import Test from './pages/Test';
 
 const config: ConfigOptions = {
   projectId: `${import.meta.env.VITE_WALLECT_CONNECT_PROJECT_ID}`,
@@ -16,6 +18,7 @@ const config: ConfigOptions = {
   accentColor: 'default',
   ethereum: {
     appName: 'web3-boilerplate',
+    chains: [chains.polygon, chains.polygonMumbai],
   },
 };
 
@@ -29,6 +32,7 @@ function App() {
         <Route path='about' element={<About />} />
         <Route path='services' element={<Services />} />
         <Route path='dashboard' element={<Dashboard />} />
+        <Route path='test' element={<Test />} />
         <Route path='notlog' element={<NotLog />} />
       </Routes>
       <Web3Modal config={config} />

@@ -9,7 +9,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { useAccount, Web3Modal, ConnectButton, useDisconnect } from '@web3modal/react';
+import { useAccount, Web3Modal, ConnectButton, useDisconnect, useBalance } from '@web3modal/react';
 import { redirect, Route, Routes, useNavigate } from 'react-router-dom';
 import { truncateAddress } from '../utils';
 import { disconnect } from 'process';
@@ -18,7 +18,7 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-function Dashboard() {
+function Test() {
   const [state, setState] = useState({
     series: [
       {
@@ -59,18 +59,23 @@ function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const disconnect = useDisconnect();
-  console.log(account.isConnected);
+  console.log();
+  const { data, error, isLoading, refetch } = useBalance({
+    addressOrName: account.address, // The address or ENS name of the account to query
+    watch: true, // Watches and refreshes data for new blocks.
+    token: '0x9F78D0E58557cDF453b38E86Ce876e5c74C92895', // CPZ is the token symbol
+  });
+  console.log(data, error, isLoading, refetch);
 
   const navigation = [
     { name: 'Home', href: '/', icon: HomeIcon, current: true },
-    { name: 'Test', href: '/test', icon: UsersIcon, current: false },
     { name: 'APY', href: '/', icon: UsersIcon, current: false },
     { name: 'DAO', href: '/', icon: FolderIcon, current: false },
   ];
 
   const userNavigation = [
     { name: 'Your Profile', href: '#' },
-    { namnavigatione: 'Settings', href: '#' },
+    { name: 'Settings', href: '#' },
     {
       name: 'Log Out',
       href: '#',
@@ -284,13 +289,13 @@ function Dashboard() {
           <main>
             <div className='py-6'>
               <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
-                <h1 className='text-2xl font-semibold text-gray-900'>Dashboard</h1>
+                <h1 className='text-2xl font-semibold text-gray-900'>Test</h1>
               </div>
               <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
                 {/* Replace with your content */}
                 <div className='py-4'>
                   <div className='h-96 rounded-lg border-4 border-dashed border-gray-200'>
-                    <Chart type='line' series={state.series} options={state.options} />
+                    Test here
                   </div>
                 </div>
                 {/* /End replace */}
@@ -303,4 +308,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Test;
