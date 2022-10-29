@@ -3,7 +3,6 @@ import {IDelegateClaim} from "./interfaces/IDelegateClaim.sol";
 import {IUniswapV2Pair} from "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
 import {IUniswapV2Router02} from "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 import {IUniswapV2Factory} from "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
-import {SushiSwapHelper} from "./SushiSwapHelper.sol";
 import {IERC20} from "@uniswap/v2-core/contracts/interfaces/IERC20.sol";
 import {Context} from "@openzeppelin/contracts/utils/Context.sol";
 
@@ -13,13 +12,14 @@ contract LugusSwapper is Context {
 
     address public uniswapV2Pair;
     IUniswapV2Router02 public immutable uniswapV2Router;
-    address public constant sushiSwapRouterAddress = 0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506; // Arbitrum Mainnet, Rinkeby...
+    address public constant sushiSwapMumbaiRouterAddress = 0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506; // Arbitrum Mainnet, Rinkeby...
+    address public constant sushiSwapEthereumRouterAddress = 0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506; // Arbitrum Mainnet, Rinkeby...
 
 
     event Swap(address indexed user, uint256 amountIn, uint256 amountOut);
 
     constructor() {
-        uniswapV2Router = IUniswapV2Router02(sushiSwapRouterAddress);
+        uniswapV2Router = IUniswapV2Router02(sushiSwapMumbaiRouterAddress);
     }
 
     function claimAndSwapForEth(address _mockStakingAddress, address _token) external{
