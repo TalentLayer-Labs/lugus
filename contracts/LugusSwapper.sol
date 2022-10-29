@@ -10,7 +10,7 @@ contract LugusSwapper {
             // swapToken(token.address, token.amount, token);
     }
 
-    function claimAllAndSwap(address mockStakingAddress, address token) external{
+    function claimAllAndSwap(address mockStakingAddress) external{
         (address[] memory tokens, uint256[] memory values) = IDelegateClaim(mockStakingAddress).claimAll(msg.sender);
         
         // for(var i = 0; i<tokens.length; i++){
