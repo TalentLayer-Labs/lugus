@@ -3,19 +3,20 @@ pragma solidity ^0.8.0;
 import {IDelegateClaim} from "./interfaces/IDelegateClaim.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import "hardhat/console.sol";
 
 contract MockStaking is IDelegateClaim, Ownable {
     address[] public tokens;
     address public swapperAddress;
-    uint private counter;
     mapping(address => mapping(address => uint256)) public userToTokenToBalance;
     mapping(address => address) userToApprover;
+
+    uint256 length = 5;
 
     constructor() {}
 
     function addTokenToList(address _tokenAddress) external onlyOwner {
         tokens.push(_tokenAddress);
-        counter++;
     }
 
     function setSwapperAddress(address _swapperAddress) external onlyOwner {
@@ -47,12 +48,14 @@ contract MockStaking is IDelegateClaim, Ownable {
     }
 
     //Transfer from Staking to Lugus
-    function claimAll(address _userAddress) external returns(address[] memory, uint256[] memory) {
+    function claimAll(address _userAddress) external returns(address[50] memory, uint256[50] memory) {
         require(userToApprover[_userAddress] == msg.sender || msg.sender == _userAddress);
-        address[] memory tokensToSwap;
-        uint256[] memory tokensToSwapBalances;
+        // uint256 length = tokens.length;
 
-        for(uint8 i = 0; i < counter; i++) {
+        address[50] memory tokensToSwap;
+        uint256[50] memory tokensToSwapBalances;
+
+        for(uint8 i = 0; i < tokens.length; i++) {
             address tokenAddress = tokens[i];
             uint256 tokenBalance = userToTokenToBalance[_userAddress][tokenAddress];
             if(tokenBalance == 0){
@@ -60,6 +63,7 @@ contract MockStaking is IDelegateClaim, Ownable {
             }
             userToTokenToBalance[_userAddress][tokenAddress] = 0;
             require(IERC20(tokenAddress).transfer(swapperAddress, tokenBalance),"Transfer Failed");
+            console.log(i);
             tokensToSwap[i] = tokenAddress;
             tokensToSwapBalances[i] = tokenBalance;
         }

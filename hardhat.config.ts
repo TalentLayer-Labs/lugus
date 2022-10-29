@@ -1,8 +1,15 @@
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
+require("dotenv").config({ path: ".env"});
 
-const config: HardhatUserConfig = {
+const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
+
+const POLYGON_PRIVATE_KEY = process.env.POLYGON_PRIVATE_KEY;
+
+module.exports = {
   solidity: "0.8.17",
+  networks: {
+    mumbai: {
+      url: `https://polygon-mumbai.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
+      accounts: [POLYGON_PRIVATE_KEY]
+    }
+  }
 };
-
-export default config;

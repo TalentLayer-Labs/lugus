@@ -27,11 +27,20 @@ contract LugusSwapper is Context {
         _swapTokenForEth(value, token, msg.sender);
     }
 
+<<<<<<< Updated upstream
     function claimAllAndSwapForEth(address mockStakingAddress) external{
         (address[] memory tokens, uint256[] memory values) = IDelegateClaim(mockStakingAddress).claimAll(msg.sender);
         for(uint8 i = 0; i < tokens.length; i++){
             _swapTokenForEth(values[i], tokens[i], msg.sender);
         }
+=======
+    function claimAllAndSwap(address mockStakingAddress) external{
+        (address[50] memory tokens, uint256[50] memory values) = IDelegateClaim(mockStakingAddress).claimAll(msg.sender);
+        
+        // for(var i = 0; i<tokens.length; i++){
+        //     swapTokenToUsdc(token[i], token.amount, token);
+        // }
+>>>>>>> Stashed changes
     }
 
     function getETHPair(address _token) public view returns (address pair) {
