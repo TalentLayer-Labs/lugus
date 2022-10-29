@@ -9,17 +9,35 @@ task("deploy", "Deploys contracts")
 
   // console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  // const MockStaking = await ethers.getContractFactory("MockStaking");
+  const MockStaking = await ethers.getContractFactory("MockStaking");
   const LugusSwapper = await ethers.getContractFactory("LugusSwapper");
+  const SimpleERC20 = await ethers.getContractFactory("SimpleERC20");
 
-  // const mockStaking = await MockStaking.deploy();
+  const mockStaking = await MockStaking.deploy();
   const lugusSwapper = await LugusSwapper.deploy();
-  
-  // await mockStaking.deployed();
-  await lugusSwapper.deployed();
+  const tokenA = await SimpleERC20.deploy();
+  const tokenB = await SimpleERC20.deploy();
+  const tokenC = await SimpleERC20.deploy();
 
-  // console.log(`MockStaking deployed to ${mockStaking.address}`);
-  console.log(`LugusSwapper deployed to ${lugusSwapper.address}`);
+  await mockStaking.deployed();
+  await lugusSwapper.deployed();
+  await tokenA.deployed();
+  await tokenB.deployed();
+  await tokenC.deployed();
+
+  await tokenA.transfer("0x781E84832cf17ACfdfAD9Beb0C408f76aEd54DF4", 100);
+  await tokenB.transfer("0x781E84832cf17ACfdfAD9Beb0C408f76aEd54DF4", 100);
+  await tokenC.transfer("0x781E84832cf17ACfdfAD9Beb0C408f76aEd54DF4", 100);
+
+  await mockStaking.addTokenToList(tokenA.address);
+  await mockStaking.addTokenToList(tokenB.address);
+  await mockStaking.addTokenToList(tokenC.address);
+
+  console.log(`MockStaking=${mockStaking.address}`);
+  console.log(`LugusSwapper=${lugusSwapper.address}`);
+  console.log(`TokenA=${tokenA.address}`);
+  console.log(`TokenB=${tokenB.address}`);
+  console.log(`TokenC=${tokenC.address}`);
 });
 
 
