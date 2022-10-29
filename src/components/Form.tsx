@@ -9,6 +9,7 @@ export default function Content() {
             className='absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-100'
           />
           <div className='relative'>
+
             <div className='lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense'>
               <div className='mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0'>
                 <div>
@@ -82,6 +83,7 @@ export default function Content() {
               </div>
             </div>
           </div>
+
         </div>
       </main>
     </div>

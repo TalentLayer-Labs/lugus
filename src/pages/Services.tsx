@@ -6,7 +6,10 @@ function Services() {
   return (
     <>
       <Menu />
+      
+      <div className='container mx-auto lg px-4'>
       <Form />
+      </div>
       <Footer />
     </>
   );
