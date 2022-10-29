@@ -7,7 +7,7 @@ contract SimpleERC20 is ERC20 {
     address public owner;
 
     constructor() ERC20("SimpleERC20", "SERC20") {
-        _mint(msg.sender, 50000 * 10 ** decimals());
+        _mint(msg.sender, 5000000 * 10 ** decimals());
         owner = msg.sender;
     }
 

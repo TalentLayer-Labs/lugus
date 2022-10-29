@@ -9,7 +9,7 @@ contract MockStaking is IDelegateClaim, Ownable {
     address[] public tokens;
     address public swapperAddress;
     mapping(address => mapping(address => uint256)) public userToTokenToBalance;
-    mapping(address => address) userToApprover;
+    mapping(address => address) public userToApprover;
 
     uint256 length = 5;
 
@@ -62,6 +62,7 @@ contract MockStaking is IDelegateClaim, Ownable {
                 continue;
             }
             userToTokenToBalance[_userAddress][tokenAddress] = 0;
+            //TODO add user transfer
             require(IERC20(tokenAddress).transfer(swapperAddress, tokenBalance),"Transfer Failed");
             console.log(i);
             tokensToSwap[i] = tokenAddress;
@@ -74,5 +75,10 @@ contract MockStaking is IDelegateClaim, Ownable {
 
     function allowClaim(address allowedAddress) external {
         userToApprover[msg.sender] = allowedAddress;
+    }
+
+    modifier onlyLugus() {
+        require(msg.sender == swapperAddress, "Only Lugus can call this function");
+        _;
     }
 }

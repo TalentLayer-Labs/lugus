@@ -46,50 +46,19 @@ contract LugusSwapper is Context {
         }
     }
 
-    function getETHPair(address _token) public view returns (address pair) {
-        return IUniswapV2Factory(uniswapV2Router.factory()).getPair(_token, uniswapV2Router.WETH());
-    } // }
-
-    function getPair(address _token1, address _token2) public view returns (address pair) {
-        return IUniswapV2Factory(uniswapV2Router.factory()).getPair(_token1, _token2);
-    }
-
-    // addLiquidity
-    function addLiquidity(
-        address _token,
-        uint256 _tokenAmount,
-        uint256 _ethAmount
-    ) public payable {
-        // approve token transfer to cover all possible scenarios
-        require(_tokenAmount <= IERC20(_token).balanceOf(address(this)), "Not enough Token in user balance");
-        require(_ethAmount <= address(this).balance, "Not enough ETH in contract balance");
-        require(IERC20(_token).approve(address(uniswapV2Router), _tokenAmount), "Not able to approve token");
-
-        uniswapV2Router.addLiquidityETH{value: _ethAmount}(
-            _token,
-            _tokenAmount,
-            0,
-            0,
-            _msgSender(),
-        // block.timestamp.add(100 seconds)
-            block.timestamp
-        );
-
-        uniswapV2Pair = getETHPair(_token);
-    }
-
     function _swapTokenForEth(uint256 _tokenAmount, address _tokenAddress, address _sender) private {
+        IERC20(_tokenAddress).approve(address(uniswapV2Router), _tokenAmount);
         // generate the uniswap pair path of token -> weth
         address[] memory path = new address[](2);
         path[0] = _tokenAddress;
         path[1] = uniswapV2Router.WETH();
 
         // Need allowance here?
-
+        uint256 balanceOf = IERC20(_tokenAddress).allowance(address(this), address(uniswapV2Router));
         console.log(
-            "uniswapV2Router from %s ----- %s ----- %s",
-                _tokenAmount,
-            path[0],
+            "uniswapV2Router %s ----- %s ----- %s",
+            balanceOf,
+            path[1],
             _sender
         );
 
@@ -120,10 +89,4 @@ contract LugusSwapper is Context {
             block.timestamp
         );
     }
-
-    function deposit() external payable {}
-
-    //to recieve ETH from uniswapV2Router when swaping
-    receive() external payable {}
-
 }

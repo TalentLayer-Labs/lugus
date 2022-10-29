@@ -111,14 +111,24 @@ describe("LugusSwapper", function () {
 		});
 		it("To ETH", async function () {
 			await stakeTokenUtils(ethers.utils.parseEther("1"));
-			await tokenA.connect(deployer).transfer(sushiSwapHelper.address, (2 *10 ** 18).toString());
+			await tokenA.connect(deployer).transfer(sushiSwapHelper.address, ethers.utils.parseEther("100"));
 
+			const deployerBalance = await tokenA.balanceOf(deployer.address);
+			// console.log("the dep ", ethers.utils.parseEther(deployerBalance.toString()));
+			// console.log("the dep ", ethers.utils.parseEther("10"));
 			await sushiSwapHelper.connect(deployer).addLiquidity(
 				tokenA.address,
-				ethers.utils.parseEther("1"),
-				ethers.utils.parseEther("1"),
-				{ value: ethers.utils.parseEther("1") }
+				ethers.utils.parseEther("10"),
+				ethers.utils.parseEther("10"),
+				{ value: ethers.utils.parseEther("10") }
 			);
+
+			const reserve = await sushiSwapHelper.getReserves();
+			console.log("the res ", reserve);
+
+			await tokenA.approve(sushiSwapHelper.address, ethers.utils.parseEther("10"));
+			await tokenA.approve('0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506', ethers.utils.parseEther("10"));
+
 			await mockStaking.connect(alice).allowClaim(lugusSwapper.address);
 			await expect(await lugusSwapper.connect(alice).claimAndSwapForEth(mockStaking.address, tokenA.address), "Claim & swap token A for ETH")
 				.to.changeTokenBalances(tokenA, [lugusSwapper, alice], [0, 0]);
