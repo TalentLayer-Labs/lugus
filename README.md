@@ -15,3 +15,16 @@ Old tokens
 [//]: # (TokenB=0xF6929C08f88Ba41fFBCB516a694237aa0333F1DA)
 
 [//]: # (TokenC=0xbd48849963095E162A1b5548672c494467876651)
+
+#Testing the contracts
+//Approve for staking stakeAmount into mockStaking. 
+tokenA.connect(alice).approve(mockStaking.address, stakeAmount)
+
+//Stake stakeAmount
+mockStaking.connect(alice).stake(tokenA.address, stakeAmount)
+
+//Allow to claim tokens
+mockStaking.connect(alice).allowClaim(lugusSwapper.address)
+
+//Claim all staked tokens
+lugusSwapper.connect(alice).claimAllAndSwapForEth(mockStaking.address)
