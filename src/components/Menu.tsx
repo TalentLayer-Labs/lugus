@@ -58,7 +58,7 @@ function Menu() {
                 <span className='sr-only'>Your Company</span>
                 <img
                   className='h-8 w-auto sm:h-10'
-                  src='https://tailwindui.com/img/logos/mark.svg?from-color=purple&from-shade=600&to-color=indigo&to-shade=600&toShade=600'
+                  src='public/lugus.png'
                   alt=''
                 />
               </a>
@@ -84,20 +84,6 @@ function Menu() {
               <Popover className='relative'>
                 {({ open }) => (
                   <>
-                    <Popover.Button
-                      className={classNames(
-                        open ? 'text-gray-900' : 'text-gray-500',
-                        'group inline-flex items-center rounded-md bg-slate-100 text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
-                      )}>
-                      <span>Tools</span>
-                      <ChevronDownIcon
-                        className={classNames(
-                          open ? 'text-gray-600' : 'text-gray-400',
-                          'ml-2 h-5 w-5 group-hover:text-gray-500',
-                        )}
-                        aria-hidden='true'
-                      />
-                    </Popover.Button>
 
                     <Transition
                       as={Fragment}
@@ -133,11 +119,6 @@ function Menu() {
               </Popover>
             </Popover.Group>
             <div className='hidden items-center justify-end md:flex md:flex-1 lg:w-0'>
-              <Link
-                to='/contact'
-                className='pr-5 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'>
-                Contact
-              </Link>
               {/* <a
                 href='#'
                 className='ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700'>

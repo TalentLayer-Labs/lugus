@@ -6,42 +6,42 @@ export default function Logo() {
         <div className='bg-gray-100'>
           <div className='mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8'>
             <p className='text-center text-base font-semibold text-gray-500'>
-              Your amazing logo partners
+              We're Proudly Built With
             </p>
             <div className='mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5'>
               <div className='col-span-1 flex justify-center md:col-span-2 lg:col-span-1'>
                 <img
                   className='h-12'
-                  src='https://tailwindui.com/img/logos/tuple-logo-gray-400.svg'
-                  alt='Tuple'
+                  src='https://upload.wikimedia.org/wikipedia/en/2/24/Polygon_blockchain_logo.png'
+                  alt='Polygon'
                 />
               </div>
               <div className='col-span-1 flex justify-center md:col-span-2 lg:col-span-1'>
                 <img
                   className='h-12'
-                  src='https://tailwindui.com/img/logos/mirage-logo-gray-400.svg'
-                  alt='Mirage'
+                  src='https://cronoscan.com/images/logo.svg?v=22.10.3.0'
+                  alt='Chronos'
                 />
               </div>
               <div className='col-span-1 flex justify-center md:col-span-2 lg:col-span-1'>
                 <img
                   className='h-12'
-                  src='https://tailwindui.com/img/logos/statickit-logo-gray-400.svg'
-                  alt='StaticKit'
+                  src='https://altlayer.io/logo.svg'
+                  alt='AltLayer'
                 />
               </div>
               <div className='col-span-1 flex justify-center md:col-span-2 md:col-start-2 lg:col-span-1'>
                 <img
                   className='h-12'
-                  src='https://tailwindui.com/img/logos/transistor-logo-gray-400.svg'
-                  alt='Transistor'
+                  src='https://authentrend.com/wp-content/uploads/2020/11/walletconnect-logo.e1cb8d21.png'
+                  alt='WalletConnect'
                 />
               </div>
               <div className='col-span-2 flex justify-center md:col-span-2 md:col-start-4 lg:col-span-1'>
                 <img
                   className='h-12'
-                  src='https://tailwindui.com/img/logos/workcation-logo-gray-400.svg'
-                  alt='Workcation'
+                  src='https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png'
+                  alt='React'
                 />
               </div>
             </div>
