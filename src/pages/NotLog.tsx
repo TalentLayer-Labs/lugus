@@ -10,7 +10,7 @@ function NotLog() {
   const { account, isReady } = useAccount();
   console.log(account);
 
-  if (account.isConnected) {
+  if (account.isConnected === true) {
     navigate('/dashboard');
   }
 
