@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Menu, Transition } from '@headlessui/react';
+import Chart from 'react-apexcharts';
 import {
   Bars3BottomLeftIcon,
   FolderIcon,
@@ -28,6 +29,42 @@ function classNames(...classes: any[]) {
 }
 
 function Dashboard() {
+  const [state, setState] = useState({
+    series: [
+      {
+        name: 'Desktops',
+        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+      },
+    ],
+    options: {
+      chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
+          enabled: false,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        curve: 'straight',
+      },
+      title: {
+        text: 'Product Trends by Month',
+        align: 'left',
+      },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+          opacity: 0.5,
+        },
+      },
+      xaxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+      },
+    },
+  });
   const { account, isReady } = useAccount();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
@@ -85,7 +122,7 @@ function Dashboard() {
                     <img
                       className='h-8 w-auto'
                       src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300'
-                      alt='Your Company'
+                      alt='Lugus'
                     />
                   </div>
                   <div className='mt-5 h-0 flex-1 overflow-y-auto'>
@@ -238,7 +275,9 @@ function Dashboard() {
               <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
                 {/* Replace with your content */}
                 <div className='py-4'>
-                  <div className='h-96 rounded-lg border-4 border-dashed border-gray-200' />
+                  <div className='h-96 rounded-lg border-4 border-dashed border-gray-200'>
+                    <Chart type='line' series={state.series} options={state.options} />
+                  </div>
                 </div>
                 {/* /End replace */}
               </div>

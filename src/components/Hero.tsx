@@ -11,7 +11,7 @@ export default function Hero() {
             <div className='absolute inset-0'>
               <img
                 className='h-full w-full object-cover'
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiowYceGGqXVty5XET-gp1PkKHiQqIxoYNvIVS-uj5eCxA1Aaf3QaFE0XAdkusj_R_Srs&usqp=CAU'
+                src='/aos-lisbon.jpg'
                 alt='People working on laptops'
               />
               <div className='absolute inset-0 bg-gradient-to-r from-purple-800 to-indigo-700 mix-blend-multiply' />

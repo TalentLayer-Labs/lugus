@@ -11,10 +11,12 @@
     "@web3modal/ethereum": "^2.0.0-alpha.8",
     "@web3modal/react": "^2.0.0-alpha.8",
     "esbuild-darwin-arm64": "^0.15.12",
+    "apexcharts": "^3.36.0",
     "ethers": "^5.7.2",
     "heroicons-react": "^1.4.1",
     "lts": "^1.2.0",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2"
   },
