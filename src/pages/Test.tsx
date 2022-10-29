@@ -5,6 +5,7 @@ import {
   Bars3BottomLeftIcon,
   FolderIcon,
   HomeIcon,
+  TvIcon,
   UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
@@ -68,14 +69,13 @@ function Test() {
   console.log(data, error, isLoading, refetch);
 
   const navigation = [
-    { name: 'Home', href: '/', icon: HomeIcon, current: true },
-    { name: 'APY', href: '/', icon: UsersIcon, current: false },
-    { name: 'DAO', href: '/', icon: FolderIcon, current: false },
+    { name: 'Dashboard', href: '/dashboard', icon: TvIcon, current: true },
+    { name: 'Schedule New Claim', href: '/services', icon: UsersIcon, current: false },
+    { name: 'About Lugus', href: '/', icon: HomeIcon, current: true },
+    { name: 'Testing Arena', href: '/test', icon: UsersIcon, current: false },
   ];
 
   const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
     {
       name: 'Log Out',
       href: '#',
@@ -178,8 +178,8 @@ function Test() {
             <div className='flex flex-shrink-0 items-center px-4'>
               <img
                 className='h-8 w-auto'
-                src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300'
-                alt='Your Company'
+                src='lugus_w.png'
+                alt='Lugus'
               />
             </div>
             <div className='mt-5 flex flex-1 flex-col'>
