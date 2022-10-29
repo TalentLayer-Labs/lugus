@@ -22,25 +22,28 @@ contract LugusSwapper is Context {
         uniswapV2Router = IUniswapV2Router02(sushiSwapRouterAddress);
     }
 
-    function claimAndSwapForEth(address mockStakingAddress, address token) external{
-        uint256 value = IDelegateClaim(mockStakingAddress).claim(msg.sender, token);
-        _swapTokenForEth(value, token, msg.sender);
+    function claimAndSwapForEth(address _mockStakingAddress, address _token) external{
+        uint256 value = IDelegateClaim(_mockStakingAddress).claim(msg.sender, _token);
+        _swapTokenForEth(value, _token, msg.sender);
     }
 
-<<<<<<< Updated upstream
-    function claimAllAndSwapForEth(address mockStakingAddress) external{
-        (address[] memory tokens, uint256[] memory values) = IDelegateClaim(mockStakingAddress).claimAll(msg.sender);
+    function claimAllAndSwapForEth(address _mockStakingAddress) external{
+        (address[50] memory tokens, uint256[50] memory values) = IDelegateClaim(_mockStakingAddress).claimAll(msg.sender);
         for(uint8 i = 0; i < tokens.length; i++){
             _swapTokenForEth(values[i], tokens[i], msg.sender);
         }
-=======
-    function claimAllAndSwap(address mockStakingAddress) external{
-        (address[50] memory tokens, uint256[50] memory values) = IDelegateClaim(mockStakingAddress).claimAll(msg.sender);
-        
-        // for(var i = 0; i<tokens.length; i++){
-        //     swapTokenToUsdc(token[i], token.amount, token);
-        // }
->>>>>>> Stashed changes
+    }
+
+    function claimAndSwapForToken(address _mockStakingAddress, address _inToken, address _outToken) external{
+        uint256 value = IDelegateClaim(_mockStakingAddress).claim(msg.sender, _inToken);
+        _swapTokenForToken(value, _inToken, _outToken, msg.sender);
+    }
+
+    function claimAllAndSwapForToken(address _mockStakingAddress, address _outToken) external{
+        (address[50] memory tokens, uint256[50] memory values) = IDelegateClaim(_mockStakingAddress).claimAll(msg.sender);
+        for(uint8 i = 0; i < tokens.length; i++){
+            _swapTokenForToken(values[i], tokens[i], _outToken, msg.sender);
+        }
     }
 
     function getETHPair(address _token) public view returns (address pair) {
@@ -80,6 +83,24 @@ contract LugusSwapper is Context {
         address[] memory path = new address[](2);
         path[0] = _tokenAddress;
         path[1] = uniswapV2Router.WETH();
+
+        // Need allowance here?
+
+        uniswapV2Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
+            _tokenAmount,
+            0, // accept any amount of ETH
+            path,
+            _sender,
+        // block.timestamp.add(100 seconds)
+            block.timestamp
+        );
+    }
+
+    function _swapTokenForToken(uint256 _tokenAmount, address _inTokenAddress, address _outTokenAddress, address _sender) private {
+        // generate the uniswap pair path of token -> weth
+        address[] memory path = new address[](2);
+        path[0] = _inTokenAddress;
+        path[1] = _outTokenAddress;
 
         // Need allowance here?
 
