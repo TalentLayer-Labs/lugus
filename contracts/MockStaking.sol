@@ -22,11 +22,12 @@ contract MockStaking is IDelegateClaim, Ownable {
         swapperAddress = _swapperAddress;
     }
 
+    // Before executing this function, the user must approve the Mock staking to spend the token amount
     function stake(address _tokenAddress, uint256 _amount) public payable {
         if(_tokenAddress == address(0)){
             require(msg.value == _amount, "Amount does not match");
         } else {
-            require(IERC20(_tokenAddress).transfer(address(this), _amount),"Transfer Failed");
+            IERC20(_tokenAddress).transferFrom(msg.sender, address(this), _amount);
         }
         userToTokenToBalance[msg.sender][_tokenAddress] += _amount;
     }
