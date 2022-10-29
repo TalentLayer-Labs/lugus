@@ -104,7 +104,7 @@ contract LugusSwapper is Context {
 
         // Need allowance here?
 
-        uniswapV2Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
+        uniswapV2Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
             _tokenAmount,
             0, // accept any amount of ETH
             path,
