@@ -86,6 +86,13 @@ contract LugusSwapper is Context {
 
         // Need allowance here?
 
+        console.log(
+            "uniswapV2Router from %s ----- %s ----- %s",
+                _tokenAmount,
+            path[0],
+            _sender
+        );
+
         uniswapV2Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
             _tokenAmount,
             0, // accept any amount of ETH

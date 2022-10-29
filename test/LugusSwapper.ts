@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/dist/src/signer-with-address';
-import { Contract, ContractFactory } from "ethers";
+import {BigNumber, Contract, ContractFactory} from "ethers";
 
 describe("LugusSwapper", function () {
 	let deployer: SignerWithAddress,
@@ -110,9 +110,15 @@ describe("LugusSwapper", function () {
 			// expect(1).to.be.equal(0);
 		});
 		it("To ETH", async function () {
-			await stakeTokenUtils(stakeAmount);
+			await stakeTokenUtils(ethers.utils.parseEther("1"));
+			await tokenA.connect(deployer).transfer(sushiSwapHelper.address, (2 *10 ** 18).toString());
 
-			await sushiSwapHelper.connect(deployer).addLiquidity(tokenA.address, 100, 100);
+			await sushiSwapHelper.connect(deployer).addLiquidity(
+				tokenA.address,
+				ethers.utils.parseEther("1"),
+				ethers.utils.parseEther("1"),
+				{ value: ethers.utils.parseEther("1") }
+			);
 			await mockStaking.connect(alice).allowClaim(lugusSwapper.address);
 			await expect(await lugusSwapper.connect(alice).claimAndSwapForEth(mockStaking.address, tokenA.address), "Claim & swap token A for ETH")
 				.to.changeTokenBalances(tokenA, [lugusSwapper, alice], [0, 0]);
@@ -152,7 +158,8 @@ describe("LugusSwapper", function () {
 		await mockStaking.connect(alice).stake(tokenC.address, tokenAmount);
 	}
 
-	const stakeTokenUtils = async (tokenAmount: number) => {
+	const stakeTokenUtils = async (tokenAmount: BigNumber) => {
+		await tokenA.transfer(alice.address, tokenAmount)
 		await tokenA.connect(alice).approve(mockStaking.address, tokenAmount);
 		await mockStaking.connect(alice).stake(tokenA.address, tokenAmount);
 	}
