@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d69f5a2a-6fff-4867-b64a-a2fd2dd9a01a/deploy-status)](https://app.netlify.com/sites/lugus-crypto/deploys)
 # Meet Lugus
 Claim tokens. Convert to your preffered token. Schedule pay outs. 
 All in one click!
