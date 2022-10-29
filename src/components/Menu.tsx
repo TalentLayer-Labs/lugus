@@ -56,7 +56,7 @@ function Menu() {
             <div className='flex justify-start lg:w-0 lg:flex-1'>
               <a href='/'>
                 <span className='sr-only'>Your Company</span>
-                <img className='h-8 w-auto sm:h-10' src='public/lugus.png' alt='' />
+                <img className='h-8 w-auto sm:h-10' src='lugus.png' alt='' />
               </a>
             </div>
             <div className='-my-2 -mr-2 md:hidden'>

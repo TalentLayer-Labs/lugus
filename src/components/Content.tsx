@@ -37,7 +37,7 @@ export default function Content() {
                 <div className='-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
                   <img
                     className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none'
-                    src='public/lugus.webp'
+                    src='lugus.webp'
                     alt='Inbox user interface'
                   />
                 </div>
@@ -112,7 +112,7 @@ export default function Content() {
                 <div className='-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0'>
                   <img
                     className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none'
-                    src='public/dash.webp'
+                    src='dash.webp'
                     alt='Inbox user interface'
                   />
                 </div>
