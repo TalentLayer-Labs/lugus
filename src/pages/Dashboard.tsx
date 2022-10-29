@@ -9,20 +9,10 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { useAccount, Web3Modal, ConnectButton } from '@web3modal/react';
+import { useAccount, Web3Modal, ConnectButton, useDisconnect } from '@web3modal/react';
 import { redirect, Route, Routes, useNavigate } from 'react-router-dom';
 import { truncateAddress } from '../utils';
-
-const navigation = [
-  { name: 'Home', href: '/', icon: HomeIcon, current: true },
-  { name: 'APY', href: '/', icon: UsersIcon, current: false },
-  { name: 'DAO', href: '/', icon: FolderIcon, current: false },
-];
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-];
+import { disconnect } from 'process';
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
@@ -68,9 +58,29 @@ function Dashboard() {
   const { account, isReady } = useAccount();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
+  const disconnect = useDisconnect();
   console.log(account.isConnected);
 
-  if (!account.isConnected) {
+  const navigation = [
+    { name: 'Home', href: '/', icon: HomeIcon, current: true },
+    { name: 'APY', href: '/', icon: UsersIcon, current: false },
+    { name: 'DAO', href: '/', icon: FolderIcon, current: false },
+  ];
+
+  const userNavigation = [
+    { name: 'Your Profile', href: '#' },
+    { name: 'Settings', href: '#' },
+    {
+      name: 'Log Out',
+      href: '#',
+      event(event: any) {
+        event.preventDefault();
+        disconnect();
+      },
+    },
+  ];
+
+  if (account.isConnected === false) {
     navigate('/notlog');
   }
 
@@ -250,6 +260,9 @@ function Dashboard() {
                         <Menu.Item key={item.name}>
                           {({ active }) => (
                             <a
+                              onClick={event => {
+                                if (item?.event) item.event(event);
+                              }}
                               href={item.href}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',

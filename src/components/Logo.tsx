@@ -24,11 +24,7 @@ export default function Logo() {
                 />
               </div>
               <div className='col-span-1 flex justify-center md:col-span-2 lg:col-span-1'>
-                <img
-                  className='h-12'
-                  src='https://altlayer.io/logo.svg'
-                  alt='AltLayer'
-                />
+                <img className='h-12' src='https://altlayer.io/logo.svg' alt='AltLayer' />
               </div>
               <div className='col-span-1 flex justify-center md:col-span-2 md:col-start-2 lg:col-span-1'>
                 <img
