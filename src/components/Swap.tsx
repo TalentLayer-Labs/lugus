@@ -1,14 +1,14 @@
 import { useContractWrite, useToken } from '@web3modal/react';
-import MockStacking from '../../contracts/MockStacking.json';
+import LugusSwapper from '../../contracts/LugusSwapper.json';
 import SimpleERC20 from '../../contracts/SimpleERC20.json';
-
-export default function Stake({ token }: any) {
+// claim and swap for eth
+export default function Swap({ token }: any) {
   console.log(token);
   const { data, error, isLoading, write } = useContractWrite({
     address: '0x781E84832cf17ACfdfAD9Beb0C408f76aEd54DF4',
-    abi: MockStacking.abi,
-    functionName: 'stake',
-    args: [token, 1],
+    abi: LugusSwapper.abi,
+    functionName: 'claimAndSwapForEth',
+    args: ['0x2d6A20e20911a27d0b4952f88e1dc80f43f18562', token],
     gasLimit: 1000000,
   });
   return (
@@ -20,7 +20,7 @@ export default function Stake({ token }: any) {
           console.log(data);
           console.log(error);
         }}>
-        {isLoading ? 'Loading' : 'Stacked!'}
+        {isLoading ? 'Loading' : 'Swaped!'}
       </button>
     </div>
   );

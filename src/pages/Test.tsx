@@ -26,6 +26,7 @@ import { truncateAddress } from '../utils';
 import { disconnect } from 'process';
 import Approve from '../components/Approve';
 import Stake from '../components/Stake';
+import Swap from '../components/Swap';
 
 const TOKENADDR = '0xff0ec82f8923952Dae4D4291af4D502D60d30b00';
 
@@ -40,15 +41,11 @@ export default function Test() {
   const navigate = useNavigate();
   const disconnect = useDisconnect();
 
-  // MockStacking   | LugusSwapper
-  // Approve => Stake => AllowClaim =>
-
-  // const { data, error, isLoading, write } = useContractWrite({
-  //   address: TOKENADDR,
-  //   abi: SimpleERC20.abi,
-  //   functionName: 'approve',
-  //   args: [tokenAddressEscrowFactory, 100],
-  // });
+  const balance = useBalance({
+    addressOrName: '0x781E84832cf17ACfdfAD9Beb0C408f76aEd54DF4',
+    token: '0xff0ec82f8923952Dae4D4291af4D502D60d30b00',
+  });
+  console.log(balance);
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: TvIcon, current: true },
@@ -160,11 +157,7 @@ export default function Test() {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className='flex flex-grow flex-col overflow-y-auto bg-indigo-700 pt-5'>
             <div className='flex flex-shrink-0 items-center px-4'>
-              <img
-                className='h-8 w-auto'
-                src='lugus_w.png'
-                alt='Lugus'
-              />
+              <img className='h-8 w-auto' src='lugus_w.png' alt='Lugus' />
             </div>
             <div className='mt-5 flex flex-1 flex-col'>
               <nav className='flex-1 space-y-1 px-2 pb-4'>
@@ -282,6 +275,7 @@ export default function Test() {
                     <div className='flex justify-center my-6'>
                       <Approve token={TOKENADDR} />
                       <Stake token={TOKENADDR} />
+                      <Swap token={TOKENADDR} />
                     </div>
                   </div>
                 </div>
