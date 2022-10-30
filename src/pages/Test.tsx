@@ -11,7 +11,7 @@ import {
   UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { CogIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import {
   useAccount,
   Web3Modal,
@@ -48,10 +48,10 @@ export default function Test() {
   console.log(balance);
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: TvIcon, current: true },
+    { name: 'Dashboard', href: '/dashboard', icon: CogIcon, current: false },
     { name: 'Schedule New Claim', href: '/services', icon: UsersIcon, current: false },
-    { name: 'About Lugus', href: '/', icon: HomeIcon, current: true },
-    { name: 'Testing Arena', href: '/test', icon: UsersIcon, current: false },
+    { name: 'About Lugus', href: '/', icon: HomeIcon, current: false },
+    { name: 'Testing Arena', href: '/test', icon: UsersIcon, current: true },
   ];
 
   const userNavigation = [

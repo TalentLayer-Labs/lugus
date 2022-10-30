@@ -62,9 +62,9 @@ function Dashboard() {
   console.log(account.isConnected);
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: TvIcon, current: true },
-    { name: 'Schedule New Claim', href: '/services', icon: UsersIcon, current: false },
-    { name: 'About Lugus', href: '/', icon: HomeIcon, current: true },
+    { name: 'Dashboard', href: '/dashboard', icon: TvIcon, current: false },
+    { name: 'Schedule New Claim', href: '/services', icon: UsersIcon, current: true },
+    { name: 'About Lugus', href: '/', icon: HomeIcon, current: false },
     { name: 'Testing Arena', href: '/test', icon: UsersIcon, current: false },
   ];
 
@@ -171,11 +171,7 @@ function Dashboard() {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className='flex flex-grow flex-col overflow-y-auto bg-indigo-700 pt-5'>
             <div className='flex flex-shrink-0 items-center px-4'>
-              <img
-                className='h-8 w-auto'
-                src='lugus_w.png'
-                alt='Lugus'
-              />
+              <img className='h-8 w-auto' src='lugus_w.png' alt='Lugus' />
             </div>
             <div className='mt-5 flex flex-1 flex-col'>
               <nav className='flex-1 space-y-1 px-2 pb-4'>

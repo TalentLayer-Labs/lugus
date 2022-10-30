@@ -5,11 +5,11 @@ import SimpleERC20 from '../../contracts/SimpleERC20.json';
 export default function Stake({ token }: any) {
   console.log(token);
   const { data, error, isLoading, write } = useContractWrite({
-    address: '0x781E84832cf17ACfdfAD9Beb0C408f76aEd54DF4',
+    address: '0x2d6A20e20911a27d0b4952f88e1dc80f43f18562',
     abi: MockStacking.abi,
     functionName: 'stake',
-    args: [token, 1],
-    gasLimit: 1000000,
+    args: [token, 9400000],
+    gasLimit: 10000,
   });
   return (
     <div className='flex justify-center my-6'>

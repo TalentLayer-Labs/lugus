@@ -65,7 +65,7 @@ function Dashboard() {
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: CogIcon, current: true },
     { name: 'Schedule New Claim', href: '/services', icon: UsersIcon, current: false },
-    { name: 'About Lugus', href: '/', icon: HomeIcon, current: true },
+    { name: 'About Lugus', href: '/', icon: HomeIcon, current: false },
     { name: 'Testing Arena', href: '/test', icon: UsersIcon, current: false },
   ];
 
@@ -172,11 +172,7 @@ function Dashboard() {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className='flex flex-grow flex-col overflow-y-auto bg-indigo-700 pt-5'>
             <div className='flex flex-shrink-0 items-center px-4'>
-              <img
-                className='h-8 w-auto'
-                src='lugus_w.png'
-                alt='Lugus'
-              />
+              <img className='h-8 w-auto' src='lugus_w.png' alt='Lugus' />
             </div>
             <div className='mt-5 flex flex-1 flex-col'>
               <nav className='flex-1 space-y-1 px-2 pb-4'>
@@ -288,84 +284,74 @@ function Dashboard() {
                 <h1 className='text-3xl font-semibold text-gray-900'>Dashboard</h1>
                 <h1 className='text-2xl font-semibold text-white'>Claims Over Time</h1>
                 <h1 className='text-2xl font-semibold text-gray-900'>Scheduled Claims</h1>
-                <p className='text-gray-900'>View the contracts you have configured Lugus auto-claiming for.</p>
-                <p className='text-white'>View the contracts you have configured auto claiming for.</p>
+                <p className='text-gray-900'>
+                  View the contracts you have configured Lugus auto-claiming for.
+                </p>
+                <p className='text-white'>
+                  View the contracts you have configured auto claiming for.
+                </p>
               </div>
 
-              
-              <div className="overflow-x-auto mx-auto max-w-7xl px-4 sm:px-6 md:px-8 relative lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:gap-24 lg:px-8">
-
-                  <table className="w-full text-sm text-left bg-zinc-900 dark:text-zinc-500">
-                      <thead className="text-xs text-zinc-200 uppercase bg-zinc-900 dark:bg-zinc-900 dark:text-zinc-200">
-                          <tr>
-                              <th scope="col" className="py-3 px-6">
-                                  Contract Name
-                              </th>
-                              <th scope="col" className="py-3 px-6">
-                                  Address
-                              </th>
-                              <th scope="col" className="py-3 px-6">
-                                  Schedule
-                              </th>
-                              <th scope="col" className="py-3 px-6">
-                                  Preferred Token
-                              </th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr className="bg-zinc-200 border-b border-zinc-300 dark:bg-zinc-200 dark:border-zinc-300">
-                              <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap dark:text-zinc-900">
-                                  Contract Name 1
-                              </th>
-                              <td className="py-4 px-6">
-                                0x8sdjk...03k2
-                              </td>
-                              <td className="py-4 px-6">
-                                  Monthly
-                              </td>
-                              <td className="py-4 px-6">
-                                  USDC
-                              </td>
-                          </tr>
-                          <tr className="bg-zinc-200 border-b border-zinc-300 dark:bg-zinc-200 dark:border-zinc-300">
-                              <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap dark:text-zinc-900">
-                                  Contract Name 2
-                              </th>
-                              <td className="py-4 px-6">
-                                0x8sdjk...03k2
-                              </td>
-                              <td className="py-4 px-6">
-                                  Monthly
-                              </td>
-                              <td className="py-4 px-6">
-                                  USDC
-                              </td>
-                          </tr>
-                          <tr className="bg-zinc-200 border-b border-zinc-300 dark:bg-zinc-200 dark:border-zinc-300">
-                              <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap dark:text-zinc-900">
-                                  Contract Name 3
-                              </th>
-                              <td className="py-4 px-6">
-                                  0x8sdjk...03k2
-                              </td>
-                              <td className="py-4 px-6">
-                                  Monthly
-                              </td>
-                              <td className="py-4 px-6">
-                                  USDC
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
+              <div className='overflow-x-auto mx-auto max-w-7xl px-4 sm:px-6 md:px-8 relative lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:gap-24 lg:px-8'>
+                <table className='w-full text-sm text-left bg-zinc-900 dark:text-zinc-500'>
+                  <thead className='text-xs text-zinc-200 uppercase bg-zinc-900 dark:bg-zinc-900 dark:text-zinc-200'>
+                    <tr>
+                      <th scope='col' className='py-3 px-6'>
+                        Contract Name
+                      </th>
+                      <th scope='col' className='py-3 px-6'>
+                        Address
+                      </th>
+                      <th scope='col' className='py-3 px-6'>
+                        Schedule
+                      </th>
+                      <th scope='col' className='py-3 px-6'>
+                        Preferred Token
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className='bg-zinc-200 border-b border-zinc-300 dark:bg-zinc-200 dark:border-zinc-300'>
+                      <th
+                        scope='row'
+                        className='py-4 px-6 font-medium whitespace-nowrap dark:text-zinc-900'>
+                        Contract Name 1
+                      </th>
+                      <td className='py-4 px-6'>0x8sdjk...03k2</td>
+                      <td className='py-4 px-6'>Monthly</td>
+                      <td className='py-4 px-6'>USDC</td>
+                    </tr>
+                    <tr className='bg-zinc-200 border-b border-zinc-300 dark:bg-zinc-200 dark:border-zinc-300'>
+                      <th
+                        scope='row'
+                        className='py-4 px-6 font-medium whitespace-nowrap dark:text-zinc-900'>
+                        Contract Name 2
+                      </th>
+                      <td className='py-4 px-6'>0x8sdjk...03k2</td>
+                      <td className='py-4 px-6'>Monthly</td>
+                      <td className='py-4 px-6'>USDC</td>
+                    </tr>
+                    <tr className='bg-zinc-200 border-b border-zinc-300 dark:bg-zinc-200 dark:border-zinc-300'>
+                      <th
+                        scope='row'
+                        className='py-4 px-6 font-medium whitespace-nowrap dark:text-zinc-900'>
+                        Contract Name 3
+                      </th>
+                      <td className='py-4 px-6'>0x8sdjk...03k2</td>
+                      <td className='py-4 px-6'>Monthly</td>
+                      <td className='py-4 px-6'>USDC</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
-              
-
-              
               <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
                 <h1 className='text-2xl font-semibold text-white'>Claims Over Time</h1>
                 <h1 className='text-2xl font-semibold text-gray-900'>Claims Over Time</h1>
-                <p className='text-gray-900'>View your claims paid out to your wallet over time from the contracts you've connected with Lugus.</p>
+                <p className='text-gray-900'>
+                  View your claims paid out to your wallet over time from the contracts you've
+                  connected with Lugus.
+                </p>
               </div>
               <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
                 {/* Replace with your content */}
