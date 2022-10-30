@@ -59,6 +59,12 @@ export default function Content() {
   const [selectedSmartContract, setSelectedSmartContract] = useState(smartContracts[0]);
   const [selectedSchedule, setSelectedSchedule] = useState(schedule[0]);
   const [selectedToken, setSelectedToken] = useState(token[0]);
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    //selectedSmartContract selectedSchedule selectedToken
+  };
+
   return (
     <div className='bg-white'>
       <main>
@@ -133,14 +139,14 @@ export default function Content() {
                     </div>
                   </label>
                 </div>
-                {/* Form Field Schedule */}                   
+                {/* Form Field Schedule */}
                 <div className='mt-6'>
                   <label>
                     <p className='mt-4 text-lg text-gray-500'>
                       <strong>Schedule Your Claim Frequency</strong>
                     </p>
                     <p className='mt-4 text-mc text-gray-500'>
-                    Choose how frequently your earnings are auto-claimed by Lugus. Choose "now" to
+                      Choose how frequently your earnings are auto-claimed by Lugus. Choose "now" to
                       claim once, without scheduling auto-claims.
                     </p>
                     <div className='mt-6'>
@@ -201,7 +207,7 @@ export default function Content() {
                       <strong>Select Your Preffered Token</strong>
                     </p>
                     <p className='mt-4 text-mc text-gray-500'>
-                    Your claimed crypto will automatically be converted to your preffered token
+                      Your claimed crypto will automatically be converted to your preffered token
                       when claimed.
                     </p>
                     <div className='mt-6'>
@@ -253,11 +259,12 @@ export default function Content() {
                         </div>
                       </Listbox>
                     </div>
-                  </label>                
+                  </label>
                 </div>
                 <div className='mt-6'>
                   <input
                     type='submit'
+                    onChange={handleSubmit}
                     value='Submit Claim Settings'
                     className='inline-flex rounded-md border border-transparent bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700'
                   />
