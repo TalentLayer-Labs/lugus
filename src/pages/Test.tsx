@@ -1,6 +1,8 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Menu, Transition } from '@headlessui/react';
 import Chart from 'react-apexcharts';
+import MockStacking from '../../contracts/MockStacking.json';
+import SimpleERC20 from '../../contracts/SimpleERC20.json';
 import {
   Bars3BottomLeftIcon,
   FolderIcon,
@@ -10,63 +12,43 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { useAccount, Web3Modal, ConnectButton, useDisconnect, useBalance } from '@web3modal/react';
+import {
+  useAccount,
+  Web3Modal,
+  ConnectButton,
+  useDisconnect,
+  useBalance,
+  useContractWrite,
+  useToken,
+} from '@web3modal/react';
 import { redirect, Route, Routes, useNavigate } from 'react-router-dom';
 import { truncateAddress } from '../utils';
 import { disconnect } from 'process';
+import Approve from '../components/Approve';
+import Stake from '../components/Stake';
+
+const TOKENADDR = '0xff0ec82f8923952Dae4D4291af4D502D60d30b00';
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-function Test() {
-  const [state, setState] = useState({
-    series: [
-      {
-        name: 'Desktops',
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-      },
-    ],
-    options: {
-      chart: {
-        height: 350,
-        type: 'line',
-        zoom: {
-          enabled: false,
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: 'straight',
-      },
-      title: {
-        text: 'Product Trends by Month',
-        align: 'left',
-      },
-      grid: {
-        row: {
-          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-          opacity: 0.5,
-        },
-      },
-      xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-      },
-    },
-  });
+export default function Test() {
   const { account, isReady } = useAccount();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [approved, setApproved] = useState(false);
   const navigate = useNavigate();
   const disconnect = useDisconnect();
-  console.log();
-  const { data, error, isLoading, refetch } = useBalance({
-    addressOrName: account.address, // The address or ENS name of the account to query
-    watch: true, // Watches and refreshes data for new blocks.
-    token: '0x9F78D0E58557cDF453b38E86Ce876e5c74C92895', // CPZ is the token symbol
-  });
-  console.log(data, error, isLoading, refetch);
+
+  // MockStacking   | LugusSwapper
+  // Approve => Stake => AllowClaim =>
+
+  // const { data, error, isLoading, write } = useContractWrite({
+  //   address: TOKENADDR,
+  //   abi: SimpleERC20.abi,
+  //   functionName: 'approve',
+  //   args: [tokenAddressEscrowFactory, 100],
+  // });
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: TvIcon, current: true },
@@ -89,6 +71,8 @@ function Test() {
   if (account.isConnected === false) {
     navigate('/notlog');
   }
+
+  const test = '123';
 
   return (
     <>
@@ -295,7 +279,10 @@ function Test() {
                 {/* Replace with your content */}
                 <div className='py-4'>
                   <div className='h-96 rounded-lg border-4 border-dashed border-gray-200'>
-                    Test here
+                    <div className='flex justify-center my-6'>
+                      <Approve token={TOKENADDR} />
+                      <Stake token={TOKENADDR} />
+                    </div>
                   </div>
                 </div>
                 {/* /End replace */}
@@ -307,5 +294,3 @@ function Test() {
     </>
   );
 }
-
-export default Test;
