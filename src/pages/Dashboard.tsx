@@ -1,5 +1,6 @@
-import { Fragment, useState } from 'react';
 import { Dialog, Menu, Transition } from '@headlessui/react';
+import MockStacking from '../../contracts/MockStacking.json';
+import { Fragment, useState } from 'react';
 import Chart from 'react-apexcharts';
 import {
   Bars3BottomLeftIcon,
@@ -10,7 +11,13 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { useAccount, Web3Modal, ConnectButton, useDisconnect } from '@web3modal/react';
+import {
+  useAccount,
+  Web3Modal,
+  ConnectButton,
+  useDisconnect,
+  useContractRead,
+} from '@web3modal/react';
 import { redirect, Route, Routes, useNavigate } from 'react-router-dom';
 import { truncateAddress } from '../utils';
 import { disconnect } from 'process';
@@ -60,7 +67,11 @@ function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const disconnect = useDisconnect();
-  console.log(account.isConnected);
+  const { data } = useContractRead({
+    address: '0x2cef87A124095d476A6F44d5ebF0d8E2F0c5b4D6',
+    abi: MockStacking.abi,
+    functionName: 'stackedTokens',
+  });
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: CogIcon, current: true },
@@ -283,6 +294,7 @@ function Dashboard() {
               <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
                 <h1 className='text-3xl font-semibold text-gray-900'>Dashboard</h1>
                 <h1 className='text-2xl font-semibold text-white'>Claims Over Time</h1>
+
                 <h1 className='text-2xl font-semibold text-gray-900'>Scheduled Claims</h1>
                 <p className='text-gray-900'>
                   View the contracts you have configured Lugus auto-claiming for.
