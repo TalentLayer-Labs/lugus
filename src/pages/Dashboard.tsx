@@ -369,7 +369,7 @@ function Dashboard() {
                 {/* Replace with your content */}
                 <div className='py-4'>
                   <div className='h-96 rounded-lg'>
-                    <Chart type='line' series={state.series} options={state.options} />
+                    <Chart type='line' series={state.series} />
                   </div>
                 </div>
                 {/* /End replace */}

@@ -1,4 +1,4 @@
-import { useContractWrite, useToken } from '@web3modal/react';
+import { useContractWrite } from '@web3modal/react';
 import MockStacking from '../../contracts/MockStacking.json';
 import SimpleERC20 from '../../contracts/SimpleERC20.json';
 
@@ -9,7 +9,6 @@ export default function Stake({ token }: any) {
     abi: MockStacking.abi,
     functionName: 'stake',
     args: [token, 9400000],
-    gasLimit: 10000,
   });
   return (
     <div className='flex justify-center my-6'>

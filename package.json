@@ -8,6 +8,7 @@
     "@types/node": "^16.18.0",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
+    "@web3modal/core": "2.0.0-beta.1",
     "@web3modal/ethereum": "^2.0.0-alpha.8",
     "@web3modal/react": "^2.0.0-alpha.8",
     "apexcharts": "^3.36.0",

@@ -4,5 +4,3 @@ export const truncateAddress = (address: string, length = 5) => {
     address.length,
   )}`;
 };
-
-export const sendVitals = message => {};

@@ -9,7 +9,6 @@ export default function Swap({ token }: any) {
     abi: LugusSwapper.abi,
     functionName: 'claimAndSwapForEth',
     args: ['0x2d6A20e20911a27d0b4952f88e1dc80f43f18562', token],
-    gasLimit: 1000000,
   });
   return (
     <div className='flex justify-center my-6'>
