@@ -1,0 +1,11 @@
+export const MockStaking ='0x2d6A20e20911a27d0b4952f88e1dc80f43f18562'
+export const LugusSwapper='0x2cef87A124095d476A6F44d5ebF0d8E2F0c5b4D6'
+
+export const TokenA='0xff0ec82f8923952Dae4D4291af4D502D60d30b00'
+export const TokenB='0x353538178F6Dc055b830Bccc338eB63BB9c2E15d'
+export const TokenC='0xE4449F2F567e561f33d10e11B48335298501ab4d'
+
+export const SushiSwapHelper='0x09f55414607fD6A032F64Be2664fE726429B7a77'
+
+export const emil = '0x32F9e7f06d614903bD4FC0d6618E8008559b409C'
+export const dercio = '0x781E84832cf17ACfdfAD9Beb0C408f76aEd54DF4'
